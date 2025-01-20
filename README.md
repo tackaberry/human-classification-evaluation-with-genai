@@ -17,7 +17,7 @@ Install requirements
 ```bash
 source env/bin/activate
 pip install -r requirements.txt
-
+cp .env.example .env # change variables in .env file
 ```
 
 Start app
