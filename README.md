@@ -6,7 +6,7 @@ This use GenAI to evaluate the accuracy of human classification of plant samples
 
 ### Vertex AI
 
-The [`test-and-import.ipynb`](./test-and-import.ipynb] collab notebook reads data from a csv and uses images - both from a google drive share - to create context for a prompt that analyzes this data. The images are copied to a bucket. The prompt is sent to Vertex AI and the responses stored in BigQuery. 
+The [`test-and-import.ipynb`](./test-and-import.ipynb) collab notebook reads data from a csv and uses images - both from a google drive share - to create context for a prompt that analyzes this data. The images are copied to a bucket. The prompt is sent to Vertex AI and the responses stored in BigQuery. 
 
 ### Cloud infrastructure needed
 
