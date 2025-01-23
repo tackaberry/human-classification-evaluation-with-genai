@@ -66,7 +66,7 @@ def load(e: me.LoadEvent):
 @me.page(
   on_load=load,
   path="/",
-  title="App",
+  title="Classification with GenAI",
 )
 def app():
 
@@ -98,10 +98,11 @@ def app():
         columns={},
       )
 
-@me.page(path="/subject", on_load=load)
+@me.page(path="/subject", on_load=load,  title="Classification with GenAI",)
 def page_2():
   classification_id = me.query_params["c"]
   data = get_row(classification_id)
+  me.set_page_title(f"Classification with GenAI - {str(data.scientific_name)}")
 
   with me.box(style=me.Style(
       margin=me.Margin.all(0),

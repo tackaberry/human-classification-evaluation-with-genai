@@ -1,0 +1,51 @@
+[
+  {
+    "name": "classification_id",
+    "mode": "NULLABLE",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "uri",
+    "mode": "REQUIRED",
+    "type": "STRING",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "filename",
+    "mode": "REQUIRED",
+    "type": "STRING",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "scientific_name",
+    "mode": "REQUIRED",
+    "type": "STRING",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "parsed_annotations",
+    "mode": "REQUIRED",
+    "type": "JSON",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "ai_generation",
+    "mode": "REQUIRED",
+    "type": "JSON",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "human_evaluation",
+    "mode": "REQUIRED",
+    "type": "JSON",
+    "description": "",
+    "fields": []
+  }
+]
