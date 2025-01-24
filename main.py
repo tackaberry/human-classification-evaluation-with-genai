@@ -185,20 +185,21 @@ def page_2():
               margin=me.Margin.all(0), padding=me.Padding.all(0)))
       with me.box(style=me.Style(margin=me.Margin.all(0))):
         firebase_auth_component(on_auth_changed=on_auth_changed)
-
-    with me.box(style=me.Style(
-        background="#fff",
-        padding=me.Padding.all(20),
-        display="flex", flex_direction="row", justify_content="space-between"
-    )):
-      me.link(text="Back to list", url="/")
-
-      [next_classification_id, next_title] = get_next_classification_id(classification_id)
-
-      next_url = f"/subject?c={next_classification_id}"
-      me.link(text=f"Next ({next_title})", url=next_url)
-
+    
     if me.state(State).email:
+
+      with me.box(style=me.Style(
+          background="#fff",
+          padding=me.Padding.all(20),
+          display="flex", flex_direction="row", justify_content="space-between"
+      )):
+        me.link(text="Back to list", url="/")
+
+        [next_classification_id, next_title] = get_next_classification_id(classification_id)
+
+        next_url = f"/subject?c={next_classification_id}"
+        me.link(text=f"Next ({next_title})", url=next_url)
+
       with me.box(style=me.Style(
           margin=me.Margin.all(10),
           display="grid",
