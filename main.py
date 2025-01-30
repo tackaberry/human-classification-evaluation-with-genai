@@ -40,7 +40,12 @@ lookup = {
     'Collection Date (day)': { 'k': 'select_label', 'v': 'label'},
 }
 
-
+HEADING_STYLE=me.Style(
+              font_size="1.5em", 
+              color="333",
+              line_height="1.5em", 
+              margin=me.Margin.all(0), padding=me.Padding.all(0))
+BYPASS_LOGIN = False
 
 @me.stateclass
 class State:
@@ -119,27 +124,27 @@ def app():
         grid_template_columns="1fr auto",
     )):
       with me.box(style=me.Style(margin=me.Margin.all(0))):
-        me.text("Classification Evaluation with GenAI", type='headline-1', 
-          style=me.Style(
-              font_size="1.5em", 
-              line_height="1.5em", 
-              margin=me.Margin.all(0), padding=me.Padding.all(0)))
+        me.text("Classification Evaluation with GenAI", type='headline-1', style=HEADING_STYLE)
+
       with me.box(style=me.Style(margin=me.Margin.all(0))):
         firebase_auth_component(on_auth_changed=on_auth_changed)
           
-    if me.state(State).email:
+    if BYPASS_LOGIN or me.state(State).email:
       with me.box(style=me.Style(margin=me.Margin.all(20))):
         me.markdown("## The Data")
         state = me.state(State)
 
         data = get_data_from_bigquery()
 
-        me.table(
-          data,
-          header=me.TableHeader(sticky=True),
-          on_click=on_click,
-          columns={},
-        )
+        for index, row in data.iterrows():
+          me.markdown(f"* [{row['scientific_name']} ({str(row['classification_id'])}) ({row['filename']})](subject?c={row['classification_id']})")
+
+        # me.table(
+        #   data,
+        #   header=me.TableHeader(sticky=True),
+        #   on_click=on_click,
+        #   columns={},
+        # )
 
 @me.page(
   path="/subject", 
@@ -178,15 +183,11 @@ def page_2():
         grid_template_columns="1fr auto",
     )):
       with me.box(style=me.Style(margin=me.Margin.all(0))):
-        me.text("Classification Evaluation with GenAI", type='headline-1', 
-          style=me.Style(
-              font_size="1.5em", 
-              line_height="1.5em", 
-              margin=me.Margin.all(0), padding=me.Padding.all(0)))
+        me.text("Classification Evaluation with GenAI", type='headline-1', style=HEADING_STYLE)
       with me.box(style=me.Style(margin=me.Margin.all(0))):
         firebase_auth_component(on_auth_changed=on_auth_changed)
     
-    if me.state(State).email:
+    if BYPASS_LOGIN or me.state(State).email:
 
       with me.box(style=me.Style(
           background="#fff",
